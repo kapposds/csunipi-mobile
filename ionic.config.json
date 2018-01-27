@@ -1,4 +1,16 @@
 {
-  "name": "myapp",
-  "app_id": ""
+  "name": "CS Unipi Mobile",
+  "app_id": "1a97bf19",
+  "gulpStartupTasks": [
+    "watch"
+  ],
+  "watchPatterns": [
+    "www/**/*",
+    "!www/lib/**/*",
+    "!www/**/*.map"
+  ],
+  "type": "ionic1",
+  "integrations": {
+    "cordova": {}
+  }
 }

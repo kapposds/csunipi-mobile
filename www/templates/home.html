@@ -1,0 +1,67 @@
+<ion-view>
+  <ion-nav-title>{{viewtitle}}</ion-nav-title>
+
+  <ion-content>
+  	<div id="wrapper">
+
+<!--Header with Logo -->
+	    <div class="banner_holder">
+	   		 <img src="img/logos/header.png"/>    
+		</div>
+
+<!-- Search Box -->
+		<div class = "row"  id="search-home">	
+			<div class="col">
+				<div class="list-inset">
+					<form ng-submit="doSearch(search_input)">
+					  <label class="item item-input">
+					    <i class="icon ion-search placeholder-icon"></i>
+					    <input type="text" placeholder="Αναζήτηση" ng-model="search_input"
+                         pattern="((\s*)[Α-ΩΆ-Ώα-ωά-ώA-Za-z0-9]+(\s*))+"          
+			             id="search-input"
+			             required
+			             oninvalid="setCustomValidity('Εισάγετε μόνο αλφαριθμητικούς χαρακτήρες ή κενό')"
+                         onchange="try{setCustomValidity('')}catch(e){}"
+              			 onkeydown="try{setCustomValidity('')}catch(e){}"/>
+					  </label>
+					</form>
+				</div>
+			</div>
+		</div>
+
+<!-- Navigation Icons -->
+
+		<div class="container">  
+		  
+          <a ng-repeat="primary_navicon in primary_navicons | orderBy : 'order' track by $index " class="flex-item button button-icon" ui-sref="app.submenu({submenuitem:primary_navicon.alias})"> <!--href="#/app/{{primary_navicon.alias}}" ui-sref="app.submenuitems({submenuitem:primary_navicon.alias})"	-->
+            <i class="icon {{primary_navicon.icon}}" aria-hidden="true"></i> <span>{{primary_navicon.title}}</span>
+          </a>	
+
+	    </div>
+
+<!-- Home Footer -->
+
+	    <div class="home-footer">
+
+		    <a ng-if="!secondary_navicon.external_url" ng-repeat="secondary_navicon in secondary_navicons | orderBy : 'order' track by $index " class="flex-item button button-icon" ui-sref="app.submenu({submenuitem:secondary_navicon.alias})">
+		    	<!-- secondary menuitems without external url -->
+	            <i id="{{secondary_navicon.alias}}" class="icon {{secondary_navicon.icon}}" aria-hidden="true"></i>
+	            <span id="{{secondary_navicon.alias}}" >{{secondary_navicon.title}}</span>
+	        </a>
+
+		    <a ng-if="secondary_navicon.external_url" ng-repeat="secondary_navicon in secondary_navicons | orderBy : 'order' track by $index " class="flex-item button button-icon" ng-click="gotoExternalLink(secondary_navicon.external_url)">
+		    	<!-- secondary menuitems with external url -->
+	            <i id="{{secondary_navicon.alias}}" class="icon {{secondary_navicon.icon}}" aria-hidden="true"></i>
+	            <span id="{{secondary_navicon.alias}}" >{{secondary_navicon.title}}</span>
+	        </a>	        	
+
+	    </div>
+	</div>
+ <!-- Footer -->
+
+    <custom-footer>
+    </custom-footer> 
+
+  </ion-content>
+
+</ion-view>

@@ -1,0 +1,95 @@
+<ion-view>
+  <ion-nav-title>{{viewtitle}}</ion-nav-title>
+  <ion-content>
+
+
+
+    <div id="wrapper" class="padding">
+
+      <div ng-repeat="page in pages"> <!-- Page Title and Content-->
+        <h4 class="page_title">{{page.title}}</h4>
+      	<p ng-bind-html ="page.content | hrefToJS" ></p>
+
+
+        <div ng-if="articles" class="article_list"><!--Articles, only for pages with articles-->
+          <!-- a class depends on page category, article thumbnail -->
+          <a  ng-repeat="article in articles"
+              ng-class="whatClassIsIt_articles(article.thumbnail,page.category)" 
+              ui-sref="app.article({submenu:page.category, page:article.category, article:article.alias})">
+                <img ng-if="article.thumbnail" ng-src="{{api_endpoint_url}}/images/thumbnails/{{article.thumbnail}}"
+                     class="article_preview_thumbnail"/>
+                <span>{{article.title}}</span>
+                <i ng-if="page.category == 'studies' || page.alias == 'research-labs' || page.category == 'services'" class="fa fa-chevron-right" aria-hidden="true">
+                  <!--chevron right, only   for studies,services and research-labs articles (because they are excepted) -->
+                </i>
+                <p class="content_preview" ng-if="article.category == 'research-projects'" ng-bind-html ="article.content | hrefToJS"> 
+                  <!--content preview, only for research-projects articles-->
+                </p>
+                <p ng-if="page.category != 'studies' && page.alias != 'research-labs' && page.category != 'services'"  class="date_preview" > <!-- except for studies,services and research-labs articles -->
+                  {{article.created_at}}
+                  <i  class="fa fa-chevron-right" aria-hidden="true"></i>
+                </p>
+                             
+          </a>    
+                <button ng-if="articlesLeft>0 && page.category!='studies'" id="loadmore" class="button" ng-click="getFeed()">
+                  Περισσότερα..
+                </button>
+
+                <p id="articles_count">Φορτώηθκαν: {{articles.length}} από {{totalArticles}} </p>
+
+        </div>
+
+        <div ng-if="showAvatars" class="avatars"><!--Avatars, only for pages with avatars-->
+
+           <!-- Search Filter for people -->
+           
+              <label class="item item-input">
+                <i class="icon ion-search placeholder-icon"></i>
+                <input type="text" placeholder="Αναζήτηση Μελών" ng-model="people_filter.$"/><br>
+              </label>
+           
+            <div ng-repeat="person in people | filter : people_filter"
+                 ng-class="whatClassIsIt_avatars(person.alias)">
+              <!--render person details elements to the DOM only if they exist -->
+              <img ng-if="person.avatar" ng-src="{{api_endpoint_url}}/images/people/{{person.avatar}}"/>
+              <h2><b>{{person.fullname}}</b></h2>
+              <p ng-if="person.location"> <i class="fa fa-building-o" aria-hidden="true"></i> Γραφείο: {{person.location}}</p>
+              <p ng-if="person.office_hours">
+                 <i class="fa fa-clock-o" aria-hidden="true"></i> Ώρες γραφείου: {{person.office_hours}}</p>
+              <p ng-if="person.phone_number">
+                <a class="info-link" href="tel:{{person.phone_number}}"><i class="fa fa-phone" aria-hidden="true"></i> {{person.phone_number}}</a>
+              </p>
+              <p ng-if="person.email"> 
+                <a class="info-link" href="mailto:{{person.email}}"><i class="fa fa-envelope-o" aria-hidden="true"></i> {{person.email}}</a>
+              </p>  
+              <p ng-if="person.website">
+                <a class="info-link" ng-click="externalWebsite(person.website)"> <i class="fa fa-globe" aria-hidden="true"></i> Website URL
+                </a>
+              </p>   
+            </div>    
+        </div>
+
+ 
+
+      
+        <hr><!--page details-->
+        <div class="details" >
+          <p> <i class="fa fa-eye" aria-hidden="true"></i> <b>Επισκέψεις:</b> {{page.views}}</p>    
+          <!-- different date between pages with articles and without -->
+          <p ng-if="!articles" > <i class="fa fa-clock-o" aria-hidden="true"></i> <b>Δημοσιεύθηκε:</b> {{page.created_at}} </p>
+          <p ng-if="articles" >  <i class="fa fa-clock-o" aria-hidden="true"></i> <b>Τελευταία Τροποίηση:</b> {{latest_article_date}} </p>
+        </div>
+      </div>   
+
+
+    </div>
+
+    <!-- Footer -->
+    <custom-footer>
+    </custom-footer>
+
+ 
+                        
+
+  </ion-content>
+</ion-view>

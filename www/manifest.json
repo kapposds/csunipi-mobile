@@ -1,7 +1,7 @@
 
 {
-  "name": "My Ionic App",
-  "short_name": "My Ionic App",
+  "name": "Computer Science University of Piraeus",
+  "short_name": "CS Unipi",
   "start_url": "index.html",
   "display": "standalone",
   "icons": [{

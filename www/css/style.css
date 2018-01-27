@@ -1,15 +1,534 @@
+﻿@font-face /*import fontawesome icons*/
+{
+    font-family: 'fontawesome';
+    src:url('../fonts/fontawesome-webfont.eot');
+    src:url('../fonts/fontawesome-webfont.eot') format('embedded-opentype'),
+        url('../fonts/fontawesome-webfont.woff') format('woff'),
+        url('../fonts/fontawesome-webfont.ttf') format('truetype'),
+        url('../fonts/fontawesome-webfont.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+/*----------------------------ionic built-in css overrides------------------------------------------------*/
+ol{
+  display:block;
+  list-style-position: inside;    
+  list-style-type: decimal;
+}
+ul{
+  display:block;
+/*  list-style-position: inside;  */
+  padding-left:8%;
+  padding-top:5%;
+  padding-bottom: 5%;  
+  list-style-type: disc;
+}
+/*for every table element except those with class president-message*/
+table:not(.president-message)
+{
+table-layout:fixed;
+width: 100%;
+}
+td:not(.president-message)
+{
+  background-color: #DDDDDD;
+  border-color:black;
+  border: 1px solid black;
+  text-align: center;  
+}
+img
+{
+  width: 100%;
+  height: auto;
+}
+a
+{
+  text-decoration:none;
+}
+/*----------------------------ionic built-in css overrides------------------------------------------------*/
 
-.bar-header{
-	background-color:#0c426f !important;
-	
-	  }
+/*header for every view*/
+.bar-header
+{
+	background-color:#154c7a !important;
+}
 
-/*header title of page*/	  
-.bar.bar-stable .title {
+/*header title of view*/	  
+.bar.bar-stable .title
+{
       color: #fff !important;
-      }
+}
 
 /*menu button*/
- .bar-stable .button.button-clear {
+ .button.button-clear
+ {
     color: #fff !important;
-  }
+ }
+
+/* ion-items with a link (for the time being they are used only in the side menu)*/
+
+.item-complex .item-content, ion-item.item
+{
+	background-color:#215281 !important;
+	white-space:normal !important;
+	color:white !important;
+}
+#menutitle
+{
+	color:#6284a5 !important;
+}
+
+/*only for the gap between primary and secondary the menuitems*/
+div.list
+{
+  background-color: #173c64;
+}
+
+/*ionic popup*/
+.popup-buttons .button
+{
+  background-color:orange!important;
+}
+/*ionic loading spinner*/
+.spinner-android {
+    stroke: white;
+}
+/*ionic loading container*/
+.loading-container .loading {
+    padding:25px;
+    background-color: rgba(37, 36, 32, 0.7);
+}
+/*-------------------end of app (sidemenu), start of home---------------------*/
+/*div that wraps content in about,article,home,page,submenu html views
+it is used to override .scroll color*/
+div#wrapper
+{
+  background-color:white !important;
+}
+
+/*this is dangerous: it is used to fill the remaining height
+with color same as the footer */
+.scroll
+{
+  background-color:#154c7a !important;
+}
+
+/*logo image holder and image*/
+.banner_holder
+{
+	border:1px;
+	background-color:#173c64;
+    width: 100%;
+    height: auto;
+    /*min-height: 200px;*/
+    position: relative;
+    /*outline:1px dotted red;*/
+}
+/*image that is child of banner_holder*/
+.banner_holder img
+{
+    width: 100%;
+    padding:0px 0px 0px 0px;
+}
+
+
+/*search in home view*/
+div#search-home
+{
+  border-top:solid 1px white;
+	background-color:#173c64;
+	color:#215281;
+	height:auto;
+	min-height:110px;
+	/*display:inline;*/
+}
+
+/*search in (side)menu view*/
+label#menu-search
+{
+  height: 32.6px;
+  border-radius:5px;
+}
+
+.button-icon .icon
+{
+  display: block; /*** icons on the texts ***/
+  font-size: 21px; /*** increase size of icons ***/
+  margin-bottom: 3px;
+  padding:0px !important;
+  /*background-color:lightblue;*/
+  color:#173c64;
+}
+
+/*menu items in home*/
+.container
+{
+    position: relative;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content:space-around;
+}
+.flex-item
+{
+
+    /*box-sizing: border-box;*/
+    padding: 15px;
+    /*outline: 1px solid #173c64;*/
+    flex: 1;
+}
+@media screen and (max-width: 992px)
+{
+    .flex-item
+    {
+        flex-basis: 25%;
+    }
+}
+
+@media screen and (max-width: 640px)
+{
+    .flex-item
+    {
+        flex-basis: 50%;
+    }
+}
+/*-------------------end of home, start of submenu---------------------*/
+/*items that displayed in submenu list*/
+.submenu_list .item
+{
+  color:#154c7a;
+  white-space: normal !important;
+  padding-top: 10px;
+  padding-bottom: 10px;  
+  border: 1px solid #c0c9d0;  
+
+}
+
+/* chevron icons used in submenu items*/
+.fa-chevron-right
+{
+  float: right;
+  padding-top: 5px;
+  padding-bottom: 5px;  
+  min-height: 30px;  
+  color:#cecdd2 !important;
+}
+
+
+/*submenuitems / avatars that work as dividers*/
+.undergraduate , .postgraduate , .doctoral , .studies-other
+{
+    padding-top: 8px;
+    padding-bottom: 8px;
+    min-height: 30px;
+    background-color: #f5f5f5;
+    color: #222 !important;
+    font-weight: 500;
+    pointer-events: none;
+    cursor: default;
+}
+
+/*b, p , a that is children of div.avatars (every person detail)*/
+div.avatars b, div.avatars p , div.avatars a
+{
+  white-space: normal;
+}
+/*-------------------end of submenu, start of pages & articles------------------*/
+.page_title , .article_title
+{
+   alignment-baseline: :center;    
+}
+
+/*date, views, downloads*/
+.details
+{
+    color:#949494;
+}
+
+/*list that displays articles, in pages*/
+.article_list .item
+{
+  background-color:#fffff0;
+  color:#195383;
+  white-space: normal;
+  border: 1px solid #c0c9d0;  
+}
+.article_list .item:active
+{
+  background-color:#eeeeee;
+}
+
+/*article list displayed only in pages included in studies category*/
+.article_list .item.studies
+{
+  background-color:#ffe3ab;
+}
+.article_list .item.studies:active
+{
+  background-color:#ffd47d;
+}
+/*only for research labs*/
+/*.article_list .item.research
+{
+  background-color:#ddf2ff;
+}*/
+
+ /*tel mail website info of people*/
+ a.info-link
+ {
+  color:#154c7a !important;
+ }
+ a.info-link:hover
+ {
+  color:orange !important;
+ }
+
+ .content_preview
+ {
+  border-width: 2px;
+  border-style: dotted;
+  border-color:orange;
+  padding-left: 2px;
+ }
+ /*p.content preview and every child of it*/
+ p.content_preview , p.content_preview *
+ {
+  white-space:normal;
+ }
+
+/*paragraph that shows created_at date of articles in pages*/
+p.date_preview
+{
+  color:#777777;
+  white-space: normal;  
+}
+
+/* attachement box */
+div.attachement_download
+{
+  background-color:#dcfbd2;  
+  white-space: normal !important;
+}
+
+/*the attachement's download link for articles with attachements*/
+.download_link
+{
+  white-space: normal !important;
+}
+/*msc invitation exclamation mark*/
+.fa-exclamation:before{
+  color: orange;
+  font-size: 31px;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+/*article thumbnail in page*/
+.article_preview_thumbnail
+{
+
+}
+
+/*load more button for articles in page*/
+button#loadmore
+{
+  margin-top: 8px;
+  background-color: #154c7a;
+  color: white;
+  font-weight: 500;
+}
+button#loadmore:active
+{
+  background-color: #173c64;
+  color: white;
+  font-weight: 500;
+}
+
+p#articles_count
+{
+  margin-top:8px;
+  text-align:right;
+  color:#949494;  
+  /*display:inline-block;  */
+  /*float: right;*/
+}
+
+/*article thumbnail in article*/
+div.article_thumbnail
+{
+  text-align:center;
+}
+img.article_thumbnail
+{
+  width:auto !important;
+}
+/*used in research-labs articles content*/
+div.itemIntroText
+{
+  font-weight: bold;
+}
+/*for the google map*/
+.scroll
+{
+  height:100%;
+}
+#map
+{
+  margin: 0;
+  padding: 0;
+  height:90%;
+  width:100%;
+}
+/*-------------------end of pages & articles, start of home footer ------------------*/
+/*footer exclusive for home template*/
+div.home-footer
+{
+	background-color:#173c64;
+	height:auto;
+	display:block;
+  border-bottom:solid 1px #ffffff;  
+}
+
+/*spans and icons for about, fullwebsite, facebook links*/
+#about, #fullwebsite, #facebook
+{
+  color:white !important;
+}
+
+/*facebook image*/
+img#facebook
+{
+  height:30px;
+  width:30px;
+  vertical-align:middle;
+}
+
+/*-------------------end of home footer, start footer ------------------*/
+/*footer div*/
+div.footerbar
+{
+  background-color:#154c7a;
+}
+
+
+/*back to top i,span*/
+#back-to-top
+{
+  color:white;
+}
+
+/*copyright text*/
+p#copyright
+{
+  text-align:center;
+  padding:5px;
+  color:#cfcfcf;
+}
+
+/*copyright links*/
+p#copyright a
+{
+  color:#cfcfcf;
+}
+
+p#copyright a:hover
+{
+  color:orange;
+  text-decoration:underline;
+}
+
+/*other footer text*/
+p#footer-text
+{
+  padding:10px;
+  color:#cfcfcf;
+  margin:0 0 0 0;
+}
+
+/*-------------------end of home footer, start of search ------------------*/
+/*text for no results*/
+p.noresults
+{
+  padding: 10px 10px 10px 10px;
+  background-color: white;
+  margin: 0px;  
+}
+/*result text*/
+div.divider-result
+{
+  background-color:#414141;
+  color:white;
+  padding-top:20px;
+  padding-bottom:16px;
+  white-space:normal;
+}
+
+/*search box in search page*/
+div#search-search
+{
+  background-color:#414141;  
+}
+
+/*icon button search*/
+i#search-button
+{
+  float:right;
+  font-size:25px;
+}
+/*Text to hide search box and clear text*/
+span#cancel-search
+{
+  float:right;
+  color:#ef473a;
+  font-size:20px;
+}
+i#search-button:active, span#cancel-search:active
+{
+  color:lightgrey;
+}
+
+/* search results divider*/
+div.divider-search
+{
+  background-color:#d8b787;
+}
+
+{
+  background-color:blue;
+}
+
+/*background color modification*/
+div.search
+{
+  background-color:white;
+}
+
+/*search articles*/
+a.search-item
+{
+  background-color:#fffaf0 !important;
+}
+
+a.search-item:active
+{
+  background-color:#ffe6c8 !important;
+}
+
+/*loadmore button in search template*/
+button#loadmore1, button#loadmore2, button#loadmore3, button#loadmore4
+{
+  margin-left: 5px;
+  margin-top: 10px;  
+  background-color: #154c7a;
+  color: white;
+  font-weight: 500;  
+}
+button#loadmore1:active, button#loadmore2:active, button#loadmore3:active, button#loadmore4:active
+{
+  background-color: #173c64;
+  color: white;
+  font-weight: 500;
+}
+button#loadmore4
+{
+  margin-bottom:10px;
+}

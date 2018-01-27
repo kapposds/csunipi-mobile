@@ -1,5 +1,150 @@
-<ion-view view-title="Search">
+<ion-view>
+  <ion-nav-title>{{viewtitle}}</ion-nav-title>
   <ion-content>
-    <h1>Search</h1>
+  <div id="wrapper">
+
+    <!-- Result -->
+    <div class="item item-divider divider-result">
+      <span ">Αποτελέσματα για '{{search_input}}'</span>
+      <i ng-show="search_field == 'off'" ng-click="toggle()" id="search-button" class="icon ion-search placeholder-icon"></i>    
+      <span ng-show="search_field == 'on'" ng-click="toggle(); new_search_input = null" id="cancel-search">Άκυρο</span>         
+    </div>   
+
+    <!-- Search Box -->
+    <div ng-show="search_field == 'on'" class = "row"  id="search-search"> 
+      <div class="col">
+        <div class="list-inset">
+          <form ng-submit="doSearch(new_search_input)">
+            <label class="item item-input">
+              <i class="icon ion-search placeholder-icon"></i>
+              <input type="text" placeholder="Αναζήτηση" ng-model="new_search_input"
+              pattern="((\s*)[Α-ΩΆ-Ώα-ωά-ώA-Za-z0-9]+(\s*))+"         
+              id="search-input"
+              required
+              oninvalid="setCustomValidity('Εισάγετε μόνο αλφαριθμητικούς χαρακτήρες ή κενό')"
+              onchange="try{setCustomValidity('')}catch(e){}" 
+              onkeydown="try{setCustomValidity('')}catch(e){}" />
+            </label>
+          </form>
+        </div>
+      </div>  
+    </div>         
+
+    <!-- News -->
+    <div class="list search">
+      <div class="item item-divider divider-search">
+        Νέα
+      </div>
+
+      <div class="article_list">
+        <a  ng-repeat="new in news"
+            ng-class="whatClassIsIt_search(new.thumbnail)" 
+            ui-sref="app.article({submenu:new.page.category, page:new.category, article:new.alias})">
+              <!-- a class depends on new thumbnail -->        
+              <img ng-if="new.thumbnail" ng-src="{{api_endpoint_url}}/images/thumbnails/{{new.thumbnail}}"
+                   class="article_preview_thumbnail"/>
+              <span>{{new.title}}</span>
+              <p class="date_preview" > 
+                {{new.created_at}}
+                <i  class="fa fa-chevron-right" aria-hidden="true"></i>
+              </p>
+                           
+        </a>    
+              <button ng-if="newsLeft>0" id="loadmore1" class="button" ng-click="getNewsFeed()">
+                Περισσότερα..
+              </button>
+      </div>          
+       
+
+      <p ng-if="news.length<1" class="noresults"> Η αναζήτησή σας δεν ταιριάζει με κανένα νέο. </p>
+
+    </div>
+
+    <!-- People -->
+    <div class="list search">
+      <div class="item item-divider divider-search">
+        Άτομα
+      </div>  
+
+      <div ng-repeat="person in people" class="item item-avatar"> 
+        <!--render person details elements to the DOM only if they exist -->
+        <img ng-if="person.avatar" ng-src="{{api_endpoint_url}}/images/people/{{person.avatar}}"/>
+        <h2><b>{{person.fullname}}</b></h2>
+        <p ng-if="person.location"> <i class="fa fa-building-o" aria-hidden="true"></i> Γραφείο: {{person.location}}</p>
+        <p ng-if="person.office_hours">
+           <i class="fa fa-clock-o" aria-hidden="true"></i> Ώρες γραφείου: {{person.office_hours}}</p>
+        <p ng-if="person.phone_number">
+          <a class="info-link" href="tel:{{person.phone_number}}"><i class="fa fa-phone" aria-hidden="true"></i> {{person.phone_number}}</a>
+        </p>
+        <p ng-if="person.email"> 
+          <a class="info-link" href="mailto:{{person.email}}"><i class="fa fa-envelope-o" aria-hidden="true"></i> {{person.email}}</a>
+        </p>  
+        <p ng-if="person.website">
+          <a class="info-link" ng-click="externalWebsite(person.website)"> <i class="fa fa-globe" aria-hidden="true"></i> Website URL
+          </a>
+        </p>   
+      </div> 
+      <button ng-if="peopleLeft>0" id="loadmore2" class="button" ng-click="getPeopleFeed()">
+        Περισσότερα..
+      </button>        
+
+    <p ng-if="people.length<1" class="noresults"> Η αναζήτησή σας δεν ταιριάζει με κανένα άτομο. </p>           
+
+    </div>
+
+    <!-- Studies -->
+    <div class="list search">
+      <div class="item item-divider divider-search">
+        Σπουδές
+      </div>   
+
+      <div class="article_list">
+        <a  ng-repeat="study in studies"
+            ng-class="whatClassIsIt_search(study.thumbnail)" 
+            ng-click="gotoState(study.page.category, study.category, study.alias)">
+              <!-- a class depends on study thumbnail -->        
+              <img ng-if="study.thumbnail" ng-src="{{api_endpoint_url}}/images/thumbnails/{{study.thumbnail}}"
+                   class="article_preview_thumbnail"/>
+              <span>{{study.title}}</span>
+              <i  class="fa fa-chevron-right" aria-hidden="true"></i>              
+        </a>    
+              <button ng-if="studiesLeft>0" id="loadmore3" class="button" ng-click="getStudiesFeed()">
+                Περισσότερα..
+              </button>
+      </div>   
+
+      <p ng-if="studies.length<1" class="noresults"> Η αναζήτησή σας δεν ταιριάζει με καμία σελίδα σπουδών. </p>
+
+    </div>
+
+    <!-- Other -->
+    <div class="list search">
+      <div class="item item-divider divider-search">
+        Άλλα
+      </div>   
+
+      <div class="article_list">
+        <a  ng-repeat="other in other"
+            ng-class="whatClassIsIt_search(other.thumbnail)" 
+            ng-click="gotoState(other.page.category, other.category, other.alias)">
+              <!-- a class depends on other thumbnail -->        
+              <img ng-if="other.thumbnail" ng-src="{{api_endpoint_url}}/images/thumbnails/{{other.thumbnail}}"
+                   class="article_preview_thumbnail"/>
+              <span>{{other.title}}</span>
+              <i  class="fa fa-chevron-right" aria-hidden="true"></i>               
+        </a>    
+              <button ng-if="otherLeft>0" id="loadmore4" class="button" ng-click="getOtherFeed()">
+                Περισσότερα..
+              </button>
+      </div>     
+
+      <p ng-if="other.length<1" class="noresults"> Η αναζήτησή σας δεν ταιριάζει με κανένα αποτέλεσμα. </p>
+
+    </div> 
+
+  </div>
+ <!-- Footer -->
+    <custom-footer> </custom-footer>    
+
   </ion-content>
 </ion-view>

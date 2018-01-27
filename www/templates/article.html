@@ -1,0 +1,44 @@
+<ion-view>
+  <ion-nav-title>{{viewtitle}}</ion-nav-title>
+  <ion-content>
+   <div id="wrapper" class="padding">
+
+    <div ng-repeat="article in articles">
+      <h4 align="center" class="article_title">{{article.title}}</h4>
+      <div ng-if="article.thumbnail"  class="article_thumbnail" >
+      <!-- Thumbnail, only for articles with thumbnail -->
+        <img ng-if="article.thumbnail" align="middle" ng-src="{{api_endpoint_url}}/images/thumbnails/{{article.thumbnail}}" class="article_thumbnail"/>
+      </div>
+    	<p ng-if="article.attachement == 0" ng-bind-html ="article.content | hrefToJS" >
+    		<!--Article Content, only for articles without attachements -->
+    	</p>
+
+    	<div ng-if="article.attachement == 1" class="attachement_download item">
+    		<!--Article Content: Attachement for Download, only for articles with attachements -->
+        	<span>Λήψη Συνημμένου:</span>
+          <p  class="download_link" ng-click="updateDownloads()" ng-bind-html ="article.content | hrefToJS" ></p>    
+     	</div>
+
+    	<hr>
+    	<div class="details" >
+      	<p ng-if="article.attachement == 1" >
+      		 <!--download detail, only for articles with attachements -->
+      		 <i class="fa fa-arrow-circle-o-down" aria-hidden="true"></i> <b>Downloads:</b> {{article.downloads}}
+      	</p> 	
+    		<p>
+    			 <i class="fa fa-eye" aria-hidden="true"></i> <b>Επισκέψεις:</b> {{article.views}}
+    		</p> 
+    		<p>
+    			 <i class="fa fa-clock-o" aria-hidden="true"></i> <b>Δημοσιεύθηκε:</b> {{article.created_at}}
+    		</p>  		
+    	</div>
+    </div>
+  </div>
+
+
+   <!-- Footer -->
+   <custom-footer> </custom-footer>       
+
+
+  </ion-content>
+</ion-view>

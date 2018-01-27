@@ -1,0 +1,35 @@
+<ion-view>
+  <ion-nav-title>{{viewtitle}}</ion-nav-title>
+  <ion-content>
+  <div id="wrapper">
+   
+  	<div class="submenu_list">
+
+	<!--   <div class="item item-divider">
+	    Cards
+	  </div> -->
+	  <a ng-repeat="submenuitem in submenuitems | orderBy : 'order'"
+	     class="item {{submenuitem.alias}}"
+	     ui-sref="app.page({page:submenuitem.alias, submenu:submenuitem.category})">
+	   		{{submenuitem.title}}
+	   	<i ng-if="isNotDivider(submenuitem.alias)"
+	   	   class="fa fa-chevron-right" aria-hidden="true">
+	   	</i>
+	  </a>
+
+	  <a ng-if="isGoogleMap()" ui-sref="app.map" class="item">
+	  <!-- google map submenu item, only for contact submenu page -->
+	   		Χάρτης
+	   	<i class="fa fa-chevron-right" aria-hidden="true"></i>
+	  </a>	  
+
+	</div>
+
+  </div>
+ <!-- Footer -->
+    <custom-footer> </custom-footer>    
+
+
+
+  </ion-content>
+</ion-view>
