@@ -532,3 +532,7 @@ button#loadmore4
 {
   margin-bottom:10px;
 }
+
+p.people-search{
+  white-space: normal !important;
+}

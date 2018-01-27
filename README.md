@@ -1,4 +1,4 @@
-# CS Unipi Mobile <img src="https://github.com/kapposds/csunipi-api/blob/master/public/images/logos/cs_unipi_author_logo.png" width="85" height="70" />
+# CS Unipi Mobile <img src="https://github.com/kapposds/csunipi-mobile/blob/master/resources/android/icon/drawable-xxxhdpi-icon.png" width="85" height="70" />
 
 Part of Bachelors Thesis. 
 

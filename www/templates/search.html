@@ -70,16 +70,16 @@
         <!--render person details elements to the DOM only if they exist -->
         <img ng-if="person.avatar" ng-src="{{api_endpoint_url}}/images/people/{{person.avatar}}"/>
         <h2><b>{{person.fullname}}</b></h2>
-        <p ng-if="person.location"> <i class="fa fa-building-o" aria-hidden="true"></i> Γραφείο: {{person.location}}</p>
-        <p ng-if="person.office_hours">
+        <p class="people-search" ng-if="person.location"> <i class="fa fa-building-o" aria-hidden="true"></i> Γραφείο: {{person.location}}</p>
+        <p class="people-search" ng-if="person.office_hours">
            <i class="fa fa-clock-o" aria-hidden="true"></i> Ώρες γραφείου: {{person.office_hours}}</p>
-        <p ng-if="person.phone_number">
+        <p class="people-search" ng-if="person.phone_number">
           <a class="info-link" href="tel:{{person.phone_number}}"><i class="fa fa-phone" aria-hidden="true"></i> {{person.phone_number}}</a>
         </p>
-        <p ng-if="person.email"> 
+        <p class="people-search" ng-if="person.email"> 
           <a class="info-link" href="mailto:{{person.email}}"><i class="fa fa-envelope-o" aria-hidden="true"></i> {{person.email}}</a>
         </p>  
-        <p ng-if="person.website">
+        <p class="people-search" ng-if="person.website">
           <a class="info-link" ng-click="externalWebsite(person.website)"> <i class="fa fa-globe" aria-hidden="true"></i> Website URL
           </a>
         </p>   
@@ -88,7 +88,7 @@
         Περισσότερα..
       </button>        
 
-    <p ng-if="people.length<1" class="noresults"> Η αναζήτησή σας δεν ταιριάζει με κανένα άτομο. </p>           
+    <p  ng-if="people.length<1" class="noresults"> Η αναζήτησή σας δεν ταιριάζει με κανένα άτομο. </p>           
 
     </div>
 
