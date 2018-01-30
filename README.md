@@ -13,11 +13,11 @@ The application is only in Greek. Developed with Ionic Framework 1.
 
 ## Installation
 * Open a terminal and type `npm install -g ionic` to install globally Ionic CLI 
-& type `npm install -g cordova@6.5.0`, to install Cordova module (tool that wraps the app into a native container)
+& type `npm install -g cordova@6.5.0`, to install Cordova module (tool that wraps the app into a native container). Use 6.5.0 version for compatibility with the project's plugins
 * type `git clone https://github.com/kapposds/csunipi-mobile` to clone the repository
 * type `cd csunipi-mobile` to navigate to the project's directory
-* type `npm install` to install dependencies
-* type `npm update` to update all outdated dependencies
+* type `npm install` to install dependencies 
+  * optionally  type `npm update` to update all outdated dependencies, but this could cause problem
 
 ## Deploy to device (Testing)
 Substitute `android` for `ios` below to use iOS (only on mac) on the following commands:
