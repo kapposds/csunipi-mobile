@@ -7,12 +7,12 @@ The application is only in Greek. Developed with Ionic Framework 1.
 ## Requirements
 * This application communicates with a web **API** to get data and therefore work normally. In order to setup the server side project, visit https://github.com/kapposds/csunipi-api 
 
-* Ionic Framework utilizes **npm** package manager for its dependencies, which comes with **Node.js** (visit https://nodejs.org/en/download/) 
-* This guide assumes you already have an <u>emulator/real device</u> setup for Android or iOS. Details about **deploying** an Ionic Framework app, can be found on https://ionicframework.com/docs/intro/deploying/ 
+* Ionic Framework utilizes **npm** package manager for its dependencies, which comes with **Node.js** version >=6 (visit https://nodejs.org/en/download/) 
+* This guide assumes you already have an <u>emulator/real device</u> setup for Android or iOS. Details about **requirements** to **deploy** an Ionic Framework app, can be found on https://ionicframework.com/docs/intro/deploying/ 
 * However the app is only tested for android yet. For more information about related requirements (i.e. JDK, Android Studio, Android SDK dependencies) to add a platform and therefore build on **android** visit https://cordova.apache.org/docs/en/latest/guide/platforms/android/
 
 ## Installation
-* Open a terminal and type `npm install -g ionic cordova` to install globally both Ionic Framework and Cordova (tool that creates native container for mobile app to run)
+* Open a terminal and type `npm install -g ionic cordova` to install globally both Ionic CLI and Cordova module (tool that creates native container for mobile app to run)
 * type `git clone https://github.com/kapposds/csunipi-mobile` to clone the repository
 * type `cd csunipi-mobile` to navigate to the project's directory
 * type `npm install` to install dependencies
@@ -24,9 +24,9 @@ Substitute `android` for `ios` below to use iOS (only on mac) on the following c
 ### Add a platform to the project
 
 * type `ionic platform add android`
-* optionally type `ionic build android`, to make sure everything went right
+* type `ionic build android`, to build  and make sure everything went right
 
-You can choose one of the following ways to run the application:
+Run one of the following commands from the project root, and choose between different ways to run the application:
 
 #### Emulate
 
@@ -38,7 +38,9 @@ You can choose one of the following ways to run the application:
 
 #### Serve 
 Alternatively you can serve the app to your browser:
-* type `ionic serve` 
+* type `ionic serve`
+
+* use --device parameter with the previous commands to specify which will device lanch the app.
 
 ## Bug Reports
 
