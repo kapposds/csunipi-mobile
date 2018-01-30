@@ -12,7 +12,8 @@ The application is only in Greek. Developed with Ionic Framework 1.
 * However the app is only tested for android yet. For more information about related requirements (i.e. JDK, Android Studio, Android SDK dependencies) to add a platform and therefore build on **android** visit https://cordova.apache.org/docs/en/latest/guide/platforms/android/
 
 ## Installation
-* Open a terminal and type `npm install -g ionic cordova` to install globally both Ionic CLI and Cordova module (tool that creates native container for mobile app to run)
+* Open a terminal and type `npm install -g ionic` to install globally Ionic CLI 
+& type `npm install -g cordova@6.5.0`, to install Cordova module (tool that wraps the app into a native container)
 * type `git clone https://github.com/kapposds/csunipi-mobile` to clone the repository
 * type `cd csunipi-mobile` to navigate to the project's directory
 * type `npm install` to install dependencies
@@ -21,9 +22,10 @@ The application is only in Greek. Developed with Ionic Framework 1.
 ## Deploy to device (Testing)
 Substitute `android` for `ios` below to use iOS (only on mac) on the following commands:
 
-### Add a platform to the project
+### Add a platform and plugins
 
-* type `ionic platform add android`
+* type `ionic cordova platform add android`,
+* type `ionic cordova prepare`, to install the required plugins
 * type `ionic build android`, to build  and make sure everything went right
 
 Run one of the following commands from the project root, and choose between different ways to run the application:
