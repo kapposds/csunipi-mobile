@@ -1,6 +1,6 @@
 # CS Unipi Mobile <img src="https://github.com/kapposds/csunipi-mobile/blob/master/resources/android/icon/drawable-xxxhdpi-icon.png" width="85" height="85" />
 
-Part of Bachelors Thesis. Hybrid mobile application intended to function as the main mobile app of the Computer Science department of the University of Piraeus, where users (students, proffesors, staff, interested guests etc) can access deparment news, members, activities, services and other information. 
+Part of Bachelors Thesis. Hybrid mobile application intended to function as the main mobile app of the Computer Science department of the University of Piraeus, where users (students, professors, staff, interested guests etc) can access department news, members, activities, services and other information. 
 
 The application is only in Greek. Developed with Ionic Framework 1.
 
@@ -13,14 +13,14 @@ The application is only in Greek. Developed with Ionic Framework 1.
 
 ## Installation
 * Open a terminal and type `npm install -g ionic` to install globally Ionic CLI 
-& type `npm install -g cordova@6.5.0`, to install Cordova module (tool that wraps the app into a native container). Use 6.5.0 version for compatibility with the project's plugins
+  & type `npm install -g cordova@6.5.0`, to install Cordova module (tool that wraps the app into a native container). Use 6.5.0 version for compatibility with the project's plugins
 * type `git clone https://github.com/kapposds/csunipi-mobile` to clone the repository
 * type `cd csunipi-mobile` to navigate to the project's directory
 * type `npm install` to install dependencies 
   * optionally  type `npm update` to update all outdated dependencies, but this could cause problem
 
-## Deploy to device (Testing)
-Substitute `android` for `ios` below to use iOS (only on mac) on the following commands:
+## Testing
+Substitute `android` for `ios` below to use iOS (only on mac) on the following commands, in order to run on different platforms:
 
 ### Add a platform and plugins
 
