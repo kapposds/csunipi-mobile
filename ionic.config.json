@@ -1,6 +1,6 @@
 {
   "name": "CS Unipi Mobile",
-  "app_id": "1a97bf19",
+  "app_id": "",
   "gulpStartupTasks": [
     "watch"
   ],
