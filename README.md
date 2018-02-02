@@ -19,9 +19,9 @@ The application is only in Greek. Developed with Ionic Framework 1.
   * optionally  type `npm update` to update all outdated dependencies, but this could cause problem
   
  ## API Endpoint Configuration
- In order for the application communicate with the API, you need to set the Endpoint (in other words the address where the API is served). The default value for the api endpoint is http://localhost:8000, if you want to change it do the following:
- * open the file app.js located in www\js directory
- * replace http://localhost:8000 ApiEndpoint url value with the address that you are serving the API
+ In order for the application communicate with the API, you need to set the Endpoint (in other words the address where the API is served). The default value for the api endpoint is `http://localhost:8000`, if you want to change it do the following:
+ * open the file `app.js` located in `www\js` directory
+ * replace `http://localhost:8000` ApiEndpoint url value with the address that you are serving the API
 
 ## Testing
 Substitute `android` for `ios` below to use iOS (only on mac) on the following commands, in order to run on different platforms:
