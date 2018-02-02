@@ -6,7 +6,6 @@ The application is only in Greek. Developed with Ionic Framework 1.
 
 ## Requirements
 * This application communicates with a web **API** to get data and therefore work normally. In order to setup the server side project, visit https://github.com/kapposds/csunipi-api 
-
 * Ionic Framework utilizes **npm** package manager for its dependencies, which comes with **Node.js** version >=6 (visit https://nodejs.org/en/download/) 
 * This guide assumes you already have an <u>emulator/real device</u> setup for Android or iOS. Details about **requirements** to **deploy** an Ionic Framework app, can be found on https://ionicframework.com/docs/intro/deploying/ 
 * However the app is only tested for android yet. For more information about related requirements (i.e. JDK, Android Studio, Android SDK dependencies) to add a platform and therefore build on **android** visit https://cordova.apache.org/docs/en/latest/guide/platforms/android/
@@ -18,6 +17,11 @@ The application is only in Greek. Developed with Ionic Framework 1.
 * type `cd csunipi-mobile` to navigate to the project's directory
 * type `npm install` to install dependencies 
   * optionally  type `npm update` to update all outdated dependencies, but this could cause problem
+  
+ ## API Endpoint Configuration
+ In order for the application communicate with the API, you need to set the Endpoint (in other words the address where the API is served). The default value for the api endpoint is http://localhost:8000, if you want to change it do the following:
+ * open the file app.js located in www\js directory
+ * replace http://localhost:8000 ApiEndpoint url value with the address that you are serving the API
 
 ## Testing
 Substitute `android` for `ios` below to use iOS (only on mac) on the following commands, in order to run on different platforms:
