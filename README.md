@@ -54,4 +54,4 @@ If you discover bug within CS Unipi Mobile, please send an e-mail to Alexandros 
 
 ## License
 
-mit?
+The current application is licensed under the [MIT license](https://opensource.org/licenses/MIT).
