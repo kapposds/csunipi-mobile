@@ -31,7 +31,7 @@ Substitute `android` for `ios` below to use iOS (only on mac) on the following c
 * type `ionic cordova platform add android`,
 * type `ionic cordova prepare`, to install the required plugins
 * type `ionic build android`, to build  and make sure everything went right
-  *optionally add `--prod --release` parameters to build or run app for production
+  * optionally add `--prod --release` parameters to build or run app for production
 
 Run one of the following commands from the project root, and choose between different ways to run the application:
 
