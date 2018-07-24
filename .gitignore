@@ -4,6 +4,7 @@
 .idea/
 .versions/
 platforms/
+node_modules/
 plugins/
 plugins/android.json
 plugins/ios.json
