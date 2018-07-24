@@ -112,16 +112,21 @@ this.keepHome = function (array)
 	};		
     this.sortPeople = function (array)
     {
-    	var president = []; var professors = []; var associate_professors = []; var assistant_professors = []; var lecturers = []; var professors_emeriti = []; var secretariat = [];
+    	var president = []; var backup_president = []; var professors = []; var associate_professors = []; var assistant_professors = []; var lecturers = []; var professors_emeriti = []; var secretariat = [];
     	for (i=0;i<array.length;i++)
     	{
-    		//split array to 7 different arrays depending on rank, except dividers that will be stored in separate variables
+    		//split array to 8 different arrays depending on rank, except dividers that will be stored in separate variables
     		switch (array[i].rank) {
 			    case 'president':
 			    	if (array[i].alias == array[i].rank){// if its divider
 			    		  var president_divider = array[i];} //store in a variable
 			    	else{ president.push(array[i]);}//else push it in the separate array
 			        break;
+            case 'backup-president':
+            if (array[i].alias == array[i].rank){// if its divider
+                var backup_president_divider = array[i];} //store in a variable
+            else{ backup_president.push(array[i]);}//else push it in the separate array
+              break;              
 			    case 'professors':
 			    	if (array[i].alias == array[i].rank){// if its divider
 			    		  var professors_divider = array[i];} //store in a variable
@@ -162,15 +167,18 @@ this.keepHome = function (array)
 		    return 1;
 		  return 0;
 		}																																													  //only for secretariat
-     	president.sort(compare);professors.sort(compare); associate_professors.sort(compare); assistant_professors.sort(compare); lecturers.sort(compare); professors_emeriti.sort(compare); secretariat.sort(compare);
+     	president.sort(compare);backup_president.sort(compare); professors.sort(compare); associate_professors.sort(compare); assistant_professors.sort(compare); lecturers.sort(compare); professors_emeriti.sort(compare); secretariat.sort(compare);
 		
 		//unshift dividers (push in the beginning of the array)
-		president.unshift(president_divider); professors.unshift(professors_divider); associate_professors.unshift(associate_professors_divider); assistant_professors.unshift(assistant_professors_divider); lecturers.unshift(lecturers_divider); professors_emeriti.unshift(professors_emeriti_divider);
+		president.unshift(president_divider); backup_president.unshift(backup_president_divider); professors.unshift(professors_divider); associate_professors.unshift(associate_professors_divider); assistant_professors.unshift(assistant_professors_divider); lecturers.unshift(lecturers_divider); professors_emeriti.unshift(professors_emeriti_divider);
     	
-    	//merge the 6 arrays back to sorted by rank, only for arrays that contain more than one element (divider)
+    	//merge the 7 arrays back to sorted by rank, only for arrays that contain more than one element (divider)
+    
     	var final_array = [];
     	if (president.length > 1)
     		final_array = final_array.concat(president);
+      if (backup_president.length > 1)
+        final_array = final_array.concat(backup_president);      
     	if (professors.length > 1)
     		final_array = final_array.concat(professors);
     	if (associate_professors.length > 1)

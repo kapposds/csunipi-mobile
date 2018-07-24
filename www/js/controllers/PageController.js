@@ -110,7 +110,7 @@
   //triggered by ng-class
   $scope.whatClassIsIt_avatars= function(person_alias)
   {
-    if (person_alias == 'president' || person_alias =='professors' || person_alias == 'associate-professors' || person_alias=='assistant-professors' || person_alias =='lecturers' || person_alias=='professors-emeriti')
+    if (person_alias == 'president' || person_alias == 'backup-president' || person_alias =='professors' || person_alias == 'associate-professors' || person_alias=='assistant-professors' || person_alias =='lecturers' || person_alias=='professors-emeriti')
     {
         return 'item item-divider';
     }
